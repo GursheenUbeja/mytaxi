@@ -26,7 +26,7 @@ public class DriverDTO
     }
 
 
-    private DriverDTO(Long id, String username, String password, GeoCoordinate coordinate)
+    public DriverDTO(Long id, String username, String password, GeoCoordinate coordinate)
     {
         this.id = id;
         this.username = username;

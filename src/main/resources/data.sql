@@ -40,3 +40,86 @@ values
  (8,
  'aced0005737200226f72672e737072696e676672616d65776f726b2e646174612e67656f2e506f696e7431b9e90ef11a4006020002440001784400017978704023000000000000404bfa1cac083127', now(), now(), false, 'ONLINE',
 'driver08pw', 'driver08');
+
+
+
+
+
+
+
+-- Create 10 Cars
+
+insert into Car(id, licenseplate , seatcount , rating , enginetype , manufacturer , deleted , driverid , selected , datecreated)
+values(
+1, 'ABDFEC' , 'Four ' ,'One' , 'Gas' , 'Toyota' , false , 1 , false , now()
+);
+
+
+
+insert into Car(id, licenseplate , seatcount , rating , enginetype , manufacturer , deleted , driverid , selected , datecreated)
+values(
+2, 'MP09123' , 'Four ' ,'One' , 'Gas' , 'Toyota' , false , NULL , false , now()
+);
+
+
+
+
+insert into Car(id, licenseplate , seatcount , rating , enginetype , manufacturer , deleted , driverid , selected , datecreated)
+values(
+3, 'MH12234' , 'Four ' ,'Two' , 'Petrol' , 'HYUNDAI' , false , 1 , false , now()
+);
+
+
+
+insert into Car(id, licenseplate , seatcount , rating , enginetype , manufacturer , deleted , driverid , selected , datecreated)
+values(
+4, 'MH14987' , 'Six ' ,'Two' , 'Electric' , 'HYUNDAI' , false , null , false , now()
+);
+
+
+
+insert into Car(id, licenseplate , seatcount , rating , enginetype , manufacturer , deleted , driverid , selected , datecreated)
+values(
+5, 'MH12987' , 'Six ' ,'Three' , 'Electric' , 'Volkswagon' , false , 2 , false , now()
+);
+
+
+
+insert into Car(id, licenseplate , seatcount , rating , enginetype , manufacturer , deleted , driverid , selected , datecreated)
+values(
+6, 'GOA123' , 'Six ' ,'Three' , 'Gas' , 'Tesla' , false , 4 , false , now()
+);
+
+
+
+
+insert into Car(id, licenseplate , seatcount , rating , enginetype , manufacturer , deleted , driverid , selected , datecreated)
+values(
+7, 'HP3456' , 'Six ' ,'Three' , 'Gas' , 'Chevrolet' , false , 6 , false , now()
+);
+
+
+
+
+
+insert into Car(id, licenseplate , seatcount , rating , enginetype , manufacturer , deleted , driverid , selected , datecreated)
+values(
+8, 'HP0456' , 'Six ' ,'Three' , 'Diesal' , 'Maruti' , false , 8, false , now()
+);
+
+
+
+insert into Car(id, licenseplate , seatcount , rating , enginetype , manufacturer , deleted , driverid , selected , datecreated)
+values(
+9, 'AP5678' , 'Four ' ,'Four' , 'Electric' , 'Suzuki' , false , 7, false , now()
+);
+
+
+
+insert into Car(id, licenseplate , seatcount , rating , enginetype , manufacturer , deleted , driverid , selected , datecreated)
+values(
+10, 'PJB123' , 'Six ' ,'Four' , 'Diesal' , 'Ford' , false ,null , false , now()
+);
+
+
+
