@@ -29,6 +29,9 @@ import com.mytaxi.exception.EntityNotFoundException;
 import com.mytaxi.service.car.CarService;
 import com.mytaxi.service.driver.DriverService;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+
 @RestController
 @RequestMapping("v1/cars")
 public class CarController {
@@ -41,23 +44,42 @@ public class CarController {
 	}
 
 	@GetMapping("/{carId}")
+	@ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
 	public CarDTO getCar(@Valid @PathVariable long carId) throws EntityNotFoundException {
 		return CarMapper.makeCarDTO(carService.find(carId));
 	}
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
+	@ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
 	public CarDTO createCar(@Valid @RequestBody CarDTO carDTO) throws ConstraintsViolationException {
 		CarDO carDO = CarMapper.makeCarDO(carDTO);
 		return CarMapper.makeCarDTO(carService.create(carDO));
 	}
 
+	@ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
+	
 	@DeleteMapping("/{carId}")
 	public void deleteCar(@Valid @PathVariable long carId) throws EntityNotFoundException {
 		carService.delete(carId);
 	}
 
+	
+	
 	@PutMapping("/{carId}")
+	@ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
 	public void updateCar(@Valid @PathVariable long carId, @RequestBody CarDTO carDTO)
 			throws ConstraintsViolationException, EntityNotFoundException {
 		CarDO carDO = CarMapper.makeCarDO(carDTO);
@@ -65,6 +87,10 @@ public class CarController {
 	}
 
 	@GetMapping
+	@ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
 	public List<CarDTO> findCars()
 			throws ConstraintsViolationException, EntityNotFoundException {
 		return CarMapper.makeCarDTOList(carService.findByDeleted(false));

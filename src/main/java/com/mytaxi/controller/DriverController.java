@@ -12,6 +12,9 @@ import com.mytaxi.service.driver.DriverService;
 import com.mytaxi.service.search.SearchService;
 import com.mytaxi.service.selectCar.SelectCarService;
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+
 import java.util.List;
 import java.util.Set;
 
@@ -52,6 +55,10 @@ public class DriverController
 
 
     @GetMapping("/{driverId}")
+    @ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
     public DriverDTO getDriver(@Valid @PathVariable long driverId) throws EntityNotFoundException
     {
         return DriverMapper.makeDriverDTO(driverService.find(driverId));
@@ -59,6 +66,10 @@ public class DriverController
 
 
     @PostMapping
+    @ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
     @ResponseStatus(HttpStatus.CREATED)
     public DriverDTO createDriver(@Valid @RequestBody DriverDTO driverDTO) throws ConstraintsViolationException
     {
@@ -68,6 +79,10 @@ public class DriverController
 
 
     @GetMapping(value = "/selectCar")
+    @ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
     public void selectCar(@Valid @RequestParam Long driverId , @RequestParam Long carId) throws EntityNotFoundException, CarAlreadyInUseException {
     	selectCar.selectCar(carId, driverId);
     }
@@ -75,12 +90,20 @@ public class DriverController
     
 
     @GetMapping(value = "/deselectCar")
+    @ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
     public void deselectCar(@Valid @RequestParam Long driverId , @RequestParam Long carId) throws EntityNotFoundException, CarAlreadyInUseException {
     	selectCar.deselectCar(carId, driverId);
     }
     
     
     @DeleteMapping("/{driverId}")
+    @ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
     public void deleteDriver(@Valid @PathVariable long driverId) throws EntityNotFoundException
     {
         driverService.delete(driverId);
@@ -88,6 +111,10 @@ public class DriverController
 
     
     @PostMapping(value = "/search")
+    @ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
     public Set<DriverDO> searchDriver(@Valid @RequestBody SearchDTO searchDTO) throws ConstraintsViolationException{
     	
     	
@@ -97,6 +124,10 @@ public class DriverController
     }
 
     @PutMapping("/{driverId}")
+    @ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
     public void updateLocation(
         @Valid @PathVariable long driverId, @RequestParam double longitude, @RequestParam double latitude)
         throws ConstraintsViolationException, EntityNotFoundException
@@ -106,6 +137,10 @@ public class DriverController
 
 
     @GetMapping
+    @ApiImplicitParams({
+	    @ApiImplicitParam(name = "Authorization", value = "Authorization token", 
+                required = true, dataType = "string", paramType = "header") })
+	
     public List<DriverDTO> findDrivers(@RequestParam OnlineStatus onlineStatus)
         throws ConstraintsViolationException, EntityNotFoundException
     {
